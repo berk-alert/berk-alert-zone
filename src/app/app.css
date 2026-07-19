@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    padding-left: 20%;
+    padding-top: 15%;
+}
+
+h1 {
+    font-size: 64px;
+}
+
+p {
+    font-size: 48px;
+}
