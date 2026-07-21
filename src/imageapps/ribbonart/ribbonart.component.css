@@ -8,11 +8,6 @@ h1 {
     font-size: 64px;
 }
 
-p, a {
+p {
     font-size: 48px;
-}
-
-nav {
-    display: flex;
-    flex-direction: column;
 }
