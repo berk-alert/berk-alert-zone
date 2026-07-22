@@ -1,11 +1,10 @@
-<main class="main">
-  <div class="content">
-    <h1>Welcome to the berk-alert zone</h1>
+<div class="header">
     <nav>
-      <a routerLink="/imageapps/ribbonart">Check out my ribbon art app</a>
-      <a routerLink="/imageapps/triangularize">Check out my triangularize app</a>
+      <a routerLink="/">Home</a>
+      <a routerLink="/imageapps/ribbonart">Ribbon Art</a>
+      <a routerLink="/imageapps/triangularize">Triangle Art</a>
     </nav>
-  </div>
+</div>
+<main class="main">
+  <router-outlet></router-outlet>
 </main>
-
-<router-outlet></router-outlet>

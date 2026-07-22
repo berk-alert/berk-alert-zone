@@ -4,15 +4,23 @@
     padding-top: 15%;
 }
 
-h1 {
-    font-size: 64px;
-}
-
-p, a {
-    font-size: 48px;
-}
-
 nav {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 16px;
+    font-size: 32px;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
 }

@@ -2,6 +2,6 @@ h1 {
     font-size: 64px;
 }
 
-p {
+p, a {
     font-size: 48px;
 }
