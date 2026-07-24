@@ -1,7 +1,6 @@
 .main {
     display: flex;
-    padding-left: 20%;
-    padding-top: 15%;
+    padding: 32px;
 }
 
 nav {
