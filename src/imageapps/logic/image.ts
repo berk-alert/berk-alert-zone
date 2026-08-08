@@ -36,6 +36,11 @@ export function rotateClockwise(image: Image): Image {
     }
 }
 
+export function rotateCounterClockwise(image: Image): Image {
+    // Why say lot word when few word do trick
+    return rotateClockwise(rotateClockwise(rotateClockwise(image)))
+}
+
 // Shrink down to ~180 pixels on smallest dimension. Crops from right and bottom.
 export function downsample(image: Image): Image {
     const scalingFactor = Math.round(Math.min(image.height, image.width) / 180);

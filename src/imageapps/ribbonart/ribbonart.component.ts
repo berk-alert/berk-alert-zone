@@ -1,11 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { FileSelectionComponent } from '../commonui/fileselection/fileselection.component';
 
 @Component({
   selector: 'bandrus-ribbon-art',
-  imports: [RouterOutlet],
+  imports: [FileSelectionComponent],
   templateUrl: './ribbonart.component.html',
   styleUrl: './ribbonart.component.css'
 })
 export class RibbonArtComponent {
+  public displayTextForTesting = "";
+
 }
