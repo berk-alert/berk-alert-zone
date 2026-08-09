@@ -5,3 +5,18 @@ h1 {
 p {
     font-size: 48px;
 }
+
+#images {
+    display: flex;
+    gap: 24px;
+}
+
+.labelled-canvas {
+    display: flex;
+    flex-direction: column;
+}
+
+.fixed-size-canvas {
+    min-width: 340px;
+    min-height: 340px;
+}

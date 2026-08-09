@@ -1,8 +1,26 @@
 <div class="content">
   <bandrus-file-selection
     [prompt]="'Select an image to turn into ribbon art'"
-    (newImageEvent)="displayTextForTesting = 'this is where it will start drawing ribbon art'"
+    (newImageEvent)="startImageProcessing($event)"
   ></bandrus-file-selection>
-  {{ displayTextForTesting }}
+
+  <div id="images">
+    <div class="labelled-canvas">
+      <p>Original image</p>
+      <canvas #control class="fixed-size-canvas"></canvas>
+    </div>
+    <div class="labelled-canvas">
+      <p>Boundary points</p>
+      <canvas #boundaryPoints class="fixed-size-canvas"></canvas>
+    </div>
+    <div class="labelled-canvas">
+      <p>Ribbon positions</p>
+      <canvas #ribbonPositions class="fixed-size-canvas"></canvas>
+    </div>
+    <div class="labelled-canvas">
+      <p>Image so far</p>
+      <canvas #ribbonImage class="fixed-size-canvas"></canvas>
+    </div>
+</div>
 </div>
 
