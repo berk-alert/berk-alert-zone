@@ -1,8 +1,17 @@
 <div class="content">
   <bandrus-file-selection
     [prompt]="'Select an image to turn into triangle art'"
-    (newImageEvent)="displayTextForTesting = 'this is where it will start drawing triangle art'"
+    (newImageEvent)="startImageProcessing($event)"
   ></bandrus-file-selection>
-  {{ displayTextForTesting }}
+  <div id="images">
+    <div class="labelled-canvas">
+      <p>Original image</p>
+      <canvas #control class="fixed-size-canvas"></canvas>
+    </div>
+    <div class="labelled-canvas">
+      <p>Image so far</p>
+      <canvas #trianagleImage class="fixed-size-canvas"></canvas>
+    </div>
+</div>
 </div>
 

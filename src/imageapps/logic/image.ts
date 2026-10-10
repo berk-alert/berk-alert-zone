@@ -105,22 +105,3 @@ export function deepCopyImage(image: Image) {
     }
     return newImage;
 }
-
-// export function findDifference(a: Image, b: Image, affectedArea: Triangle): number {
-//     const minX = Math.min(affectedArea.x1, affectedArea.x2, affectedArea.x3);
-//     const maxX = Math.max(affectedArea.x1, affectedArea.x2, affectedArea.x3);
-//     const minY = Math.min(affectedArea.y1, affectedArea.y2, affectedArea.y3);
-//     const maxY = Math.max(affectedArea.y1, affectedArea.y2, affectedArea.y3);
-
-//     let difference = 0;
-//     for (let row = minY; row < maxY; row += 1) {
-//         for (let col = minX; col < maxX; col += 1) {
-//             const aPixel = a.rows[row].pixels[col];
-//             const bPixel = b.rows[row].pixels[col];
-//             difference += Math.abs(aPixel.r - bPixel.r);
-//             difference += Math.abs(aPixel.g - bPixel.g);
-//             difference += Math.abs(aPixel.b - bPixel.b);
-//         }
-//     }
-//     return difference;
-// }
