@@ -129,8 +129,7 @@ function fillCell(x: number, y: number, image: Image): Image {
 // Lots of duplication with `rasterizeLine`, consider deduplicating
 export function setInitialPixelsForRibbon(image: Image, uninitializedRibbon: RibbonPosition, swathSize: number): RibbonPosition {
     // TODO this Line constructor can swap the p1 x and y, pushing p1 out of the legal bounds.
-    //  We either need to clip it to be back within range, or we need to account for the oob 
-    //  point in the loop below. This causes diffferent failures when height > width vs when width > height
+    //  We're currently handling it downstream, but it would be better to just not create invalid lines in the first place.
     const line =  new Line(uninitializedRibbon.p1[0], uninitializedRibbon.p1[1], uninitializedRibbon.p2[0], uninitializedRibbon.p2[1]);
     let stepOfY: number;
     let stepOfEpsilon: number;
@@ -164,15 +163,10 @@ export function setInitialPixelsForRibbon(image: Image, uninitializedRibbon: Rib
 }
 
 function addInitialPixels(x: number, y: number, image: Image, ribbon: RibbonPosition, swathSize: number) {
-    // // TODO hella duplication in here, consider streamlining. Then again, only needed once per run, so :shrug:
-    // for (let _x = x - swathSize; _x <= x + swathSize; _x++) {
-    //     for (let _y = y - swathSize; _y <= y + swathSize; _y++) {
-    //         if (_x >=0 && _x < image.width && _y >= 0 && _y < image.height) {
-    //             ribbon.addUnsetPixels([[_x, _y, image.rows[_y].pixels[_x]]])
-    //         }
-    //     }
-    // }
-
+    // bandaid fix for the fact that we're sometimes invoking this out of bounds. should fix root cause instead
+    if (x >= image.width || y >= image.height) {
+        return;
+    }
 
     for (let _x = x - swathSize; _x <= x + swathSize; _x++) {
         if (_x >=0 && _x < image.width) {

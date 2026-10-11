@@ -73,11 +73,16 @@ export function getInitialRibbonPositions(controlImage: Image, swatchSize = 10):
             // TODO can skip if we've already added RibbonPosition(p2, p1)
             const uninitializedRibbon = new RibbonPosition(p1, p2);
             const initializedRibbon = setInitialPixelsForRibbon(controlImage, uninitializedRibbon, swatchSize);
-            ribbonPositions.push(initializedRibbon);
-            const currentTime = Date.now();
-            const totalSeconds = Math.round((currentTime - startingTime) / 1000);
-            const averageSeconds = Math.round(totalSeconds / ribbonPositions.length);
-            console.log(`Added ribbon #${ribbonPositions.length} (total: ${totalSeconds}s, avg: ${averageSeconds}s)`);
+            if (initializedRibbon.getSize() > 0) {
+                ribbonPositions.push(initializedRibbon);
+                const currentTime = Date.now();
+                const totalSeconds = Math.round((currentTime - startingTime) / 1000);
+                const averageSeconds = Math.round(totalSeconds / ribbonPositions.length);
+                console.log(`Added ribbon #${ribbonPositions.length} (total: ${totalSeconds}s, avg: ${averageSeconds}s)`);
+            } else {
+                // TODO shouldn't happen, need to track down root cause for empty ribbons after initialization
+                console.log(`Ribbon from ${p1} to ${p2} came out empty. how'd that happen.`);
+            }
         }
     }
     return ribbonPositions;

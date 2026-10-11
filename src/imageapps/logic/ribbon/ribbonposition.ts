@@ -67,7 +67,7 @@ export class RibbonPosition {
         if (this.cachedSize != undefined) {
             return this.cachedSize;
         }
-        const size = [...this.unsetPixels.values()].map((foo) => foo.size).reduce((soFar, next) => soFar + next);
+        const size = [...this.unsetPixels.values()].map((foo) => foo.size).reduce((soFar, next) => soFar + next, 0);
         this.cachedSize = size;
         return size;
     }
