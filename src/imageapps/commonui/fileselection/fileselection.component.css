@@ -1,9 +1,9 @@
 h1 {
-    font-size: 64px;
+    font-size: 32px;
 }
 
 input {
-    font-size: 24px;
+    font-size: 16px;
 }
 
 .canvas {
@@ -32,5 +32,5 @@ input {
 }
 
 .control-button {
-    font-size: 24px;
+    font-size: 16px;
 }

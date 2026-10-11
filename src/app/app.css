@@ -1,13 +1,15 @@
 .main {
-    display: flex;
-    padding: 32px;
+    display: flex;    
+    padding: 8px 64px;
 }
 
 nav {
     display: flex;
     flex-direction: row;
     gap: 16px;
-    font-size: 32px;
+    font-size: 24px;
+    padding: 16px;
+    background: paleturquoise;
 }
 
 a:link {
@@ -22,4 +24,5 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
+  text-decoration: bold;
 }

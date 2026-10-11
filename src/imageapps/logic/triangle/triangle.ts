@@ -53,8 +53,6 @@ export function getNormalizedRandomTriangle(maxHeight: number, maxWidth: number)
     const bAngle = angle(bLength, cLength, aLength);
     const cAngle = angle(cLength, aLength, bLength);
 
-    debugger;
-
     if (aAngle < 15 || aAngle > 140 || bAngle < 15 || bAngle > 140 || cAngle < 15 || cAngle > 140) {
         return getNormalizedRandomTriangle(maxHeight, maxWidth);
     }
