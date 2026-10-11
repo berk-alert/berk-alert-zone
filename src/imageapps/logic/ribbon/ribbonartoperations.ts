@@ -32,7 +32,7 @@ export function getHighlightedBoundaryPoints(controlImage: Image): Image {
     for (let [col, row] of boundaryPoints) {
         for (let dCol = -1; dCol <= 1; dCol++) {
             for (let dRow = -1; dRow <= 1; dRow++) {
-                if (col + dCol >= 0 && col + dCol < controlImage.height && row + dRow >= 0 && row + dRow < controlImage.width) {
+                if (col + dCol >= 0 && col + dCol < controlImage.width && row + dRow >= 0 && row + dRow < controlImage.height) {
                     highlightedImage.rows[row + dRow].pixels[col + dCol] = {
                         r: 0,
                         g: 255,

@@ -93,6 +93,11 @@ export class RibbonPosition {
         let totalBlue = 0;
         let totalCount = 0;
         for (let pixel of [...this.unsetPixels.values()].flatMap((foo) => [...foo.values()])) {
+            // TODO somehow we're getting undefined pixels here when height > width on the base image. Definately
+            //  related to how we're setting the unset pixels
+            if (pixel === undefined) {
+                debugger;
+            }
             totalRed += pixel.r;
             totalGreen += pixel.g;
             totalBlue += pixel.b;

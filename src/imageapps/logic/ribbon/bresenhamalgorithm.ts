@@ -128,7 +128,9 @@ function fillCell(x: number, y: number, image: Image): Image {
 
 // Lots of duplication with `rasterizeLine`, consider deduplicating
 export function setInitialPixelsForRibbon(image: Image, uninitializedRibbon: RibbonPosition, swathSize: number): RibbonPosition {
-        
+    // TODO this Line constructor can swap the p1 x and y, pushing p1 out of the legal bounds.
+    //  We either need to clip it to be back within range, or we need to account for the oob 
+    //  point in the loop below. This causes diffferent failures when height > width vs when width > height
     const line =  new Line(uninitializedRibbon.p1[0], uninitializedRibbon.p1[1], uninitializedRibbon.p2[0], uninitializedRibbon.p2[1]);
     let stepOfY: number;
     let stepOfEpsilon: number;
@@ -151,6 +153,8 @@ export function setInitialPixelsForRibbon(image: Image, uninitializedRibbon: Rib
         x = x + 1;
         epsilon = epsilon + stepOfEpsilon;
         
+        // TODO wth, i don't think epsilon is even used. i don't remember how this chunk was meant to work. are we always
+        //  generating 45 degree angles ??? oh no oh no oh no.
         if ((epsilon << 1) > line.dx) {
             epsilon = epsilon - line.dx;
             y = y + stepOfY;
