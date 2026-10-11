@@ -61,6 +61,19 @@ export function getHighlightedRibbonLines(controlImage: Image): Image {
     return highlightedImage;
 }
 
+function getEdge(controlImage: Image, point: [number, number]): 'left' | 'right' | 'top' | 'bottom' | undefined {
+    if (point[0] == 0) {
+        return 'left';
+    } else if (point[1] == 0) {
+        return 'top';
+    } else if (point[0] == controlImage.width - 1) {
+        return 'right';
+    } else if (point[1] == controlImage.height - 1) {
+        return 'bottom';
+    }
+    return undefined;
+}
+
 export function getInitialRibbonPositions(controlImage: Image, swatchSize = 10): RibbonPosition[] {
     const ribbonPositions: RibbonPosition[] = [];
     const boundaryPoints = getBoundaryPoints(controlImage);
@@ -70,6 +83,12 @@ export function getInitialRibbonPositions(controlImage: Image, swatchSize = 10):
             if (p1[0] == p2[0] && p1[1] == p2[1]) {
                 continue;
             }
+            const p1Edge = getEdge(controlImage, p1);
+            const p2Edge = getEdge(controlImage, p2);
+            if (!!p1Edge && !!p2Edge && p1Edge === p2Edge) {
+                continue;
+            }
+            
             // TODO can skip if we've already added RibbonPosition(p2, p1)
             const uninitializedRibbon = new RibbonPosition(p1, p2);
             const initializedRibbon = setInitialPixelsForRibbon(controlImage, uninitializedRibbon, swatchSize);
