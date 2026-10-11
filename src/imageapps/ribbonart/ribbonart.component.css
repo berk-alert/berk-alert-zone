@@ -11,6 +11,10 @@ p {
     gap: 24px;
 }
 
+#images.hidden {
+    display: none;
+}
+
 .labelled-canvas {
     display: flex;
     flex-direction: column;

@@ -20,7 +20,10 @@ export class TriangularizeComponent {
   public iterations: number = 0;
   public appliedIterations: number = 0;
 
+  protected started = false;
+
   protected startImageProcessing(controlImage: Image): void {
+    this.started = true;
     this.drawImage(this.controlCanvas, controlImage);
 
     const blankImage = getBlankImage(controlImage.height, controlImage.width);

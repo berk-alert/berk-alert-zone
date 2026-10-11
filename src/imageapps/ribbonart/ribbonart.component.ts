@@ -25,8 +25,10 @@ export class RibbonArtComponent {
   @ViewChild('ribbonImage')
   private ribbonImageCanvas: ElementRef<HTMLCanvasElement> = {} as ElementRef<HTMLCanvasElement>;
 
+  protected started = false;
 
   protected startImageProcessing(baseImage: Image): void {
+    this.started = true;
     this.drawImage(this.controlCanvas, baseImage);
 
     const boundaryPointsImage = getHighlightedBoundaryPoints(baseImage);

@@ -4,7 +4,7 @@
     (newImageEvent)="startImageProcessing($event)"
   ></bandrus-file-selection>
 
-  <div id="images">
+  <div id="images" [class.hidden]="!started">
     <div class="labelled-canvas">
       <p>Original image</p>
       <canvas #control class="fixed-size-canvas"></canvas>
